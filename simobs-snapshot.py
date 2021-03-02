@@ -6,7 +6,7 @@ import os.path
 
 # set up
 msname=sys.argv[1]
-conf_file='/home/yuping/DSA2000-Whitepaper-Simulation/dsa2000-loc.cfg'
+conf_file=sys.argv[2]
 
 # get antenna positions
 tabname='snapshot_antenna_positions_'+os.path.basename(conf_file.split('.cfg')[0])+'.tab'
