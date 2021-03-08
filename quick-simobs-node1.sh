@@ -1,16 +1,19 @@
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/00.ms -450s -390s &
+dir='/lustre/yuping/2021-03-01-dsa2000-configs/1600chan-20210226M'
+conf='20210226-configs/20210226M.cfg'
+
+python simobs.py $dir/00.ms -450s -390s $conf &
 # Sleep seems to be needed so that log files are separate
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/01.ms -390s -330s &
+python simobs.py $dir/01.ms -390s -330s $conf &
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/02.ms -330s -270s &
+python simobs.py $dir/02.ms -330s -270s $conf &
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/03.ms -270s -210s &
+python simobs.py $dir/03.ms -270s -210s $conf &
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/04.ms -210s -150s &
+python simobs.py $dir/04.ms -210s -150s $conf &
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/05.ms -150s -90s &
+python simobs.py $dir/05.ms -150s -90s $conf &
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/06.ms -90s -30s &
+python simobs.py $dir/06.ms -90s -30s $conf &
 sleep 2
-python simobs.py /lustre/yuping/2020-12-28-dsa2000-take2/130chan_60x15s/07.ms -30s 30s &
+python simobs.py $dir/07.ms -30s 30s $conf &
