@@ -27,7 +27,7 @@ me = casatools.measures()
 sm.open(msname)
 pos_ovro_mma=me.observatory('ovro_mma')
 sm.setconfig(telescopename='ovro_mma', x=xx, y=yy, z=zz, dishdiameter=diam, mount='alt-az', antname=list(anames), padname=list(anames), coordsystem='local', referencelocation=pos_ovro_mma)
-sm.setspwindow(spwname='LBand', freq='1.35GHz', deltafreq='0.8125MHz', freqresolution='0.8125MHz', nchannels=1, stokes='RR RL LR LL')
+sm.setspwindow(spwname='LBand', freq='0.7GHz', deltafreq='0.8125MHz', freqresolution='0.325MHz', nchannels=4000, stokes='RR RL LR LL')
 sm.setfeed('perfect R L')
 # With rotated.cfg I got 6.11x6.02 with natural weighting.
 # sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+85.00.00.000'])
