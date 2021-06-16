@@ -1,5 +1,5 @@
 dir='/fastpool/data/AJ-15int-4000chan'
-conf='20210226-configs/20210226M.cfg'
+conf='20210326-configs/20210226AJ.cfg'
 
 python simobs.py $dir/00.ms -450s -390s $conf &
 # Sleep seems to be needed so that log files are separate

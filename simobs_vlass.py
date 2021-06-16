@@ -8,25 +8,12 @@ import os.path
 msname=sys.argv[1]
 start_ha=sys.argv[2]
 end_ha=sys.argv[3]
-conf_file=sys.argv[4]
-
-# get antenna positions
-tabname=start_ha+'_antenna_positions_'+os.path.basename(conf_file.split('.cfg')[0])+'.tab'
-tb = casatools.table()
-tb.fromascii(tabname, conf_file, firstline=3, sep=' ', columnnames=['X', 'Y', 'Z', 'DIAM', 'NAME'], datatypes=['D', 'D', 'D', 'D', 'A'])
-xx=tb.getcol('X')
-yy=tb.getcol('Y')
-zz=tb.getcol('Z')
-diam=tb.getcol('DIAM')
-anames=tb.getcol('NAME')
-tb.close()
 
 # simulate setup
 sm = casatools.simulator()
 me = casatools.measures()
 sm.open(msname)
-pos_ovro_mma=me.observatory('ovro_mma')
-sm.setconfig(telescopename='ovro_mma', x=xx, y=yy, z=zz, dishdiameter=diam, mount='alt-az', antname=list(anames), padname=list(anames), coordsystem='local', referencelocation=pos_ovro_mma)
+sm.setknownconfig('vla.b')
 sm.setspwindow(spwname='LBand', freq='0.7GHz', deltafreq='325kHz', freqresolution='325kHz', nchannels=4000, stokes='RR RL LR LL')
 sm.setfeed('perfect R L')
 # With rotated.cfg I got 6.11x6.02 with natural weighting.

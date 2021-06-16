@@ -10,16 +10,17 @@ def get_psf_stats(fn, extent_deg):
     pixel_scale = abs(header['CDELT1'])
     num_pix = abs(header['NAXIS1'])
     max_radius = int(extent_deg/pixel_scale)
-    radial_average=np.zeros(max_radius)
+    assert max_radius <= num_pix // 2
+    radial_avgabs=np.zeros(max_radius)
     radial_std = np.zeros(max_radius)
     radial_maxabs = np.zeros(max_radius)
     for i in range(max_radius):
         circle_perimeter = draw.circle_perimeter(num_pix // 2, num_pix // 2, i)
-        radial_average[i] = np.mean(im[circle_perimeter])
+        radial_avgabs[i] = np.mean(np.abs(im[circle_perimeter]))
         radial_std[i] = np.std(im[circle_perimeter])
         radial_maxabs[i] = np.abs(im[circle_perimeter]).max()
     dist = np.linspace(0, max_radius*pixel_scale*60, num=max_radius)
-    return dist, radial_average, radial_std, radial_maxabs
+    return dist, radial_avgabs, radial_std, radial_maxabs
 
 def read_image_fits(fn: str) -> Tuple[np.array, fits.Header]:
     with fits.open(fn) as hdulist:
