@@ -43,3 +43,7 @@ startha=start_ha
 endha=end_ha
 sm.setoptions(ftmachine='ft')
 sm.observe('source', 'LBand', starttime=startha, stoptime=endha)
+sm.close()
+
+from casacore import tables
+tables.removeImagingColumns(msname)
