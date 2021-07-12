@@ -1,32 +1,35 @@
-dir='/fastpool/data/AI-15int-4000chan'
-conf='20210326-configs/20210226AI.cfg'
+dir='/fastpool/data/W-15int-8000chan'
+conf='20210326-configs/20210226W.cfg'
 
 mkdir $dir
 
-python simobs.py $dir/00.ms -450s -390s $conf &
-# Sleep seems to be needed so that log files are separate
-sleep 2
-python simobs.py $dir/01.ms -390s -330s $conf &
-sleep 2
-python simobs.py $dir/02.ms -330s -270s $conf &
-sleep 2
-python simobs.py $dir/03.ms -270s -210s $conf &
-sleep 2
-python simobs.py $dir/04.ms -210s -150s $conf &
-sleep 2
-python simobs.py $dir/05.ms -150s -90s $conf &
-sleep 2
-python simobs.py $dir/06.ms -90s -30s $conf &
-sleep 2
-python simobs.py $dir/07.ms -30s 30s $conf &
-sleep 2
-wait
+# commented the following out because they should be the first batch.
+
+#python simobs.py $dir/00.ms -450s -390s $conf &
+## Sleep seems to be needed so that log files are separate
+#sleep 2
+#python simobs.py $dir/01.ms -390s -330s $conf &
+#sleep 2
+#python simobs.py $dir/02.ms -330s -270s $conf &
+#sleep 2
+#python simobs.py $dir/03.ms -270s -210s $conf &
+#sleep 2
+#python simobs.py $dir/04.ms -210s -150s $conf &
+#sleep 2
+#python simobs.py $dir/05.ms -150s -90s $conf &
+#sleep 2
+#python simobs.py $dir/06.ms -90s -30s $conf &
+#sleep 2
+#python simobs.py $dir/07.ms -30s 30s $conf &
+#sleep 2
+#wait
 python simobs.py $dir/08.ms 30s 90s $conf &
 sleep 2
 python simobs.py $dir/09.ms 90s 150s $conf &
 sleep 2
 python simobs.py $dir/10.ms 150s 210s $conf &
 sleep 2
+wait
 python simobs.py $dir/11.ms 210s 270s $conf &
 sleep 2
 python simobs.py $dir/12.ms 270s 330s $conf &
