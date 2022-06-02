@@ -29,20 +29,23 @@ pos_ovro_mma=me.observatory('ovro_mma')
 # add Earth radius to ITRF elevation.
 pos_ovro_mma['m2']['value'] += 6.3781e6
 sm.setconfig(telescopename='ovro_mma', x=xx, y=yy, z=zz, dishdiameter=diam, mount='alt-az', antname=list(anames), padname=list(anames), coordsystem='local', referencelocation=pos_ovro_mma)
-sm.setspwindow(spwname='LBand', freq='2.0GHz', deltafreq='0.8125MHz', freqresolution='0.8125MHz', nchannels=1, stokes='RR RL LR LL')
+sm.setspwindow(spwname='LBand', freq='0.7GHz', deltafreq='1625kHz', freqresolution='1625kHz', nchannels=800, stokes='RR RL LR LL')
 sm.setfeed('perfect R L')
 # With rotated.cfg I got 6.11x6.02 with natural weighting.
 # sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+85.00.00.000'])
 # declination from wsclean
-#sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+37.07.47.400'])
-sm.setfield(sourcename='3C286', sourcedirection=['J2000', '13h31m08.287984s', '+30.30.32.958850'])
+sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+37.07.47.400'])
 sm.setauto(autocorrwt=0.0)
 
 # simulate time
 sm.setlimits(shadowlimit=0.001, elevationlimit='8.0deg')
-integrationtime='1.5s'
+integrationtime='60s'
 sm.settimes(integrationtime=integrationtime, usehourangle=True, referencetime=me.epoch('utc', '58562.0d'))
 startha=start_ha
 endha=end_ha
 sm.setoptions(ftmachine='ft')
-sm.observe('3C286', 'LBand', starttime=startha, stoptime=endha)
+sm.observe('source', 'LBand', starttime=startha, stoptime=endha)
+sm.close()
+
+from casacore import tables
+tables.removeImagingColumns(msname)
