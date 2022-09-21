@@ -24,8 +24,8 @@ def point_src_with_gain(gain, ms, rms=None):
                            chunks={"row": 2e3}):
         n_rows = xds.dims['row']
         print(n_rows)
-        # freq_arr = (da.arange(8000) * 162.5e3) + 0.7e9
-        freq_arr = da.array([2.0e9])
+        freq_arr = (da.arange(64) * 1.34e3) + 1.35e9
+        # freq_arr = da.array([2.0e9])
         src_coh = wsclean_predict(xds['UVW'], src_lm, da.array(['POINT']), da.array([1.0]),
                         da.array([[0]]), da.array([True]), da.array([1.35e9]), da.array([[0,0,0]]), freq_arr)
         time_idx = xds.TIME.data.map_blocks(lambda a: np.unique(a, return_inverse=True)[1], dtype=np.int32)
