@@ -29,7 +29,7 @@ def create_ms(msname: str, conf_file: str, n_chan: int = 1, n_integration: int =
     sm.setconfig(telescopename='ovro_mma', x=xx, y=yy, z=zz, dishdiameter=diam, mount='alt-az', antname=list(anames),
                  padname=list(anames), coordsystem='local', referencelocation=pos_ovro_mma)
     sm.setspwindow(spwname='LBand', freq='0.7GHz', deltafreq=f'{CHAN_WIDTH_KHZ}kHz',
-                   freqresolution=f'{CHAN_WIDTH_KHZ}kHz', nchannels=int(2e6/CHAN_WIDTH_KHZ) + 1,
+                   freqresolution=f'{CHAN_WIDTH_KHZ}kHz', nchannels=int(1.3e6/CHAN_WIDTH_KHZ) + 1,
                    stokes='XX XY YX YY')
     sm.setfeed('perfect X Y')
     # sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+85.00.00.000'])
