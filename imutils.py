@@ -23,9 +23,17 @@ def scale_image(f, out_file, flux_scale):
         hdul.writeto(out_file)     
 
 
-def change_dec(f, out_file, new_dec_deg):
+def change_dec(f, out_file):
     with fits.open(f) as hdul:
         h = hdul[0].header
+        h['CRVAL2'] = 37.1298333
+        hdul[0].header = h
+        hdul.writeto(out_file)     
+
+def change_ra_dec(f, out_file):
+    with fits.open(f) as hdul:
+        h = hdul[0].header
+        h['CRVAL1']=0.
         h['CRVAL2'] = 37.1298333
         hdul[0].header = h
         hdul.writeto(out_file)     
