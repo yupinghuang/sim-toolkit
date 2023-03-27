@@ -32,7 +32,7 @@ def create_ms(msname: str, conf_file: str, n_chan: int = 1, n_integration: int =
                    freqresolution=f'{CHAN_WIDTH_KHZ}kHz', nchannels=int(1.3e6/CHAN_WIDTH_KHZ) + 1,
                    stokes='XX XY YX YY')
     sm.setfeed('perfect X Y')
-    # sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+85.00.00.000'])
+    sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+85.00.00.000'])
     # declination from wsclean
     sm.setfield(sourcename='source', sourcedirection=['J2000', '00h00m0.0', '+37.07.47.400'])
     sm.setauto(autocorrwt=0.0)
